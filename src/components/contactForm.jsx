@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import FormError from "./common/formError";
 import Joi from "joi-browser";
 
 class ContactForm extends Component {
   state = {
-    formData: { contactName: "", email: "", message: "" },
-    errors: {}
+    formData: { name: "", _replyto: "", message: "" },
+    errors: { name: "", _replyto: "", message: "" } // it should be empty but like this we start with an invalid form and text of the button is "all fields required"
   };
 
   schema = {
-    contactName: Joi.string()
+    name: Joi.string()
       .required()
-      .label("Contact Name"),
-    email: Joi.string()
+      .label("Name"),
+    _replyto: Joi.string()
       .email()
       .required()
       .label("Email"),
@@ -22,14 +21,13 @@ class ContactForm extends Component {
   };
 
   handleChange = e => {
-    // const errors = { ...this.state.errors };
-    // const errorMessage = this.validateProperty(e.currentTarget);
-    // if (errorMessage) errors[e.currentTarget.name] = errorMessage.message;
-    // else delete errors[e.currentTarget.name];
-
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(e.currentTarget);
+    if (errorMessage) errors[e.currentTarget.name] = errorMessage.message;
+    else delete errors[e.currentTarget.name];
     const formData = { ...this.state.formData };
     formData[e.currentTarget.name] = e.currentTarget.value;
-    this.setState({ formData }); // if I uncomment the upper section, I shall add "errors" to the state
+    this.setState({ formData, errors });
   };
 
   validateProperty = ({ name, value }) => {
@@ -50,68 +48,82 @@ class ContactForm extends Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
     const errors = this.validateForm();
     this.setState({ errors: errors || {} });
-    if (errors) return;
-    // when everything is correct, call the server
+    if (errors) {
+      e.preventDefault();
+      return;
+    }
+    // if everything is ok, default behaviour
+  };
+
+  getButtonText = () => {
+    if (Object.keys(this.state.errors).length === 0) return "SEND";
+    if ("_replyto" in this.state.errors) {
+      if (this.state.errors._replyto.includes("valid")) {
+        return "Invalid email";
+      }
+    }
+    return "All fields required";
   };
 
   render() {
+    this.validateForm();
     return (
-      <form style={{ width: "500px" }} onSubmit={this.handleSubmit}>
-        <div className="form-row">
-          <div className="form-group col-md-6">
-            <input
-              value={this.state.formData.contactName}
+      <React.Fragment>
+        <form
+          action="https://formspree.io/redbonobo.design@gmail.com"
+          method="POST"
+          onSubmit={this.handleSubmit}
+          autoComplete="off"
+        >
+          <div className="form-row">
+            <div className="form-group col-md-12">
+              <input
+                value={this.state.formData.name}
+                onChange={this.handleChange}
+                type="text"
+                className="form-control input input-short"
+                id="name"
+                placeholder="Contact name"
+                name="name"
+              />
+            </div>
+            <div className="form-group col-md-12">
+              <input
+                value={this.state.formData._replyto}
+                onChange={this.handleChange}
+                type="email"
+                className={`form-control input input-short ${
+                  this.state.errors._replyto !== "" ? "1" : "2"
+                }`}
+                id="email"
+                placeholder="Email"
+                name="_replyto"
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <textarea
+              value={this.state.formData.message}
               onChange={this.handleChange}
-              type="text"
-              className="form-control input input-short"
-              id="contactName"
-              placeholder="Contact name"
-              name="contactName"
+              className="form-control input input-long"
+              id="message"
+              rows="6"
+              placeholder="Message"
+              name="message"
             />
           </div>
-          <div className="form-group col-md-6">
-            <input
-              value={this.state.formData.email}
-              onChange={this.handleChange}
-              type="email"
-              className="form-control input input-short"
-              id="email"
-              placeholder="Email"
-              name="email"
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <textarea
-            value={this.state.formData.message}
-            onChange={this.handleChange}
-            className="form-control input input-long"
-            id="message"
-            rows="5"
-            placeholder="Message"
-            name="message"
+          <input
+            className={`col-md-12 btn ${
+              this.validateForm() ? "disabled" : "enabled"
+            }`}
+            type="submit"
+            value={this.getButtonText()}
+            disabled={this.validateForm()}
           />
-        </div>
-        {this.state.errors.contactName && (
-          <FormError error={this.state.errors.contactName} />
-        )}
-        {this.state.errors.email && (
-          <FormError error={this.state.errors.email} />
-        )}
-        {this.state.errors.message && (
-          <FormError error={this.state.errors.message} />
-        )}
-        <button className="btn btn-primary">
-          <i
-            className="fab fa-telegram-plane"
-            style={{ margin: "0 10px 0 0" }}
-          />
-          Send
-        </button>
-      </form>
+        </form>
+      </React.Fragment>
     );
   }
 }

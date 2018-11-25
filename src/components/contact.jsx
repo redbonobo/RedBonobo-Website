@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ContactForm from "./contactForm";
-
-import Jumbotron from "./jumbotron";
+import { Parallax } from "react-parallax";
 
 class Contact extends Component {
   state = {};
@@ -9,12 +8,26 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        <Jumbotron
-          coverImage={require("../img/cover1.jpg")}
-          slogan=""
-          height="800"
-        />
-        <ContactForm />
+        <Parallax
+          blur={{ min: -40, max: 60 }}
+          bgImage={require("../img/cover1.jpg")}
+          bgImageAlt="contact background"
+          strength={0}
+        >
+          <div style={{ height: "1000px", paddingTop: "300px" }}>
+            <div
+              style={{
+                textAlign: "center",
+                width: "400px",
+                margin: "auto",
+                display: "block"
+              }}
+            >
+              <h1 className="jumboSlogan">Get in touch</h1>
+              <ContactForm />
+            </div>
+          </div>
+        </Parallax>
       </div>
     );
   }

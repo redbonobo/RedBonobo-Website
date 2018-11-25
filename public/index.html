@@ -46,23 +46,26 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-  <script>
-    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-    window.onscroll = function() {
-      scrollFunction();
-    };
+  <!--
+    <script>
+        // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+        window.onscroll = function() {
+          scrollFunction();
+        };
 
-    function scrollFunction() {
-      if (
-        document.body.scrollTop > 4 * 80 ||
-        document.documentElement.scrollTop > 4 * 80
-      ) {
-        document.getElementById("navbar").classList.add("shrink");
-        document.getElementById("logo").classList.add("shrink");
-      } else {
-        document.getElementById("navbar").classList.remove("shrink");
-        document.getElementById("logo").classList.remove("shrink");
-      }
-    }
-  </script>
+        function scrollFunction() {
+          if (
+            document.body.scrollTop > 6 * 80 ||
+            document.documentElement.scrollTop > 6 * 80
+          ) {
+            document.getElementById("navbar").classList.add("shrink");
+            document.getElementById("logo").classList.add("shrink");
+          } else {
+            document.getElementById("navbar").classList.remove("shrink");
+            document.getElementById("logo").classList.remove("shrink");
+          }
+        }
+      </script>
+    </html>
+  -->
 </html>

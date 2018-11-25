@@ -1,29 +1,38 @@
 import React, { Component } from "react";
+import { getProjects } from "../services/projectService";
 import ProjectItem from "./projectItem";
 
 class ProjectGrid extends Component {
   state = {
-    projects: [
-      { id: 1, name: "Venus", coverUrl: require("../img/venusCover.jpg") },
-      { id: 2, name: "Mouse", coverUrl: require("../img/venusCover.jpg") },
-      { id: 3, name: "Frendy", coverUrl: require("../img/venusCover.jpg") },
-      { id: 4, name: "Hub", coverUrl: require("../img/venusCover.jpg") }
-    ]
+    projects: [],
+    rowHeight: "600"
   };
 
-  randomBox = () => {
-    return null;
-  };
+  constructor() {
+    super();
+    this.state.projects = getProjects();
+  }
 
   render() {
     return (
-      <div class="container-fluid">
-        {this.state.projects.map(project => (
-          <ProjectItem key={project.id} project={project}>
-            <h1>This is {project.name}</h1>
-          </ProjectItem>
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="container-fluid">
+          {this.state.projects.map(project => (
+            <div
+              key={project._id}
+              className="row"
+              styles={{ height: `${this.state.rowHeight}px` }}
+            >
+              <div className="col">
+                <ProjectItem
+                  rowHeight={this.state.rowHeight}
+                  project={project}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }

@@ -10,8 +10,8 @@ class Home extends Component {
       <React.Fragment>
         <Jumbotron
           coverImage={require("../img/cover1.jpg")}
-          slogan="Ioan fiydaputa."
-          height="700"
+          slogan="We design reality."
+          height="1000"
           strength={-1000}
         />
         <ProjectGrid />

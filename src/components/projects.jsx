@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProjectGrid from "./projectGrid";
-import ContactForm from "./contactForm";
 
 import Jumbotron from "./jumbotron";
 
@@ -12,11 +11,10 @@ class Projects extends Component {
         <Jumbotron
           coverImage={require("../img/cover1.jpg")}
           slogan="Idea + Details = Design."
-          height="400"
+          height="800"
           strength={0}
         />
         <ProjectGrid />
-        <ContactForm />
       </React.Fragment>
     );
   }

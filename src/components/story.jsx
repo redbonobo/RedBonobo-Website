@@ -9,8 +9,8 @@ class Story extends Component {
       <React.Fragment>
         <Jumbotron
           coverImage={require("../img/cover1.jpg")}
-          slogan="Ioan fiydaputa."
-          height="1200"
+          slogan="The story of the Red Bonobo"
+          height="1000"
           strength={-2000}
         />
       </React.Fragment>
