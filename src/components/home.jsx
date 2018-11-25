@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ProjectGrid from "./projectGrid";
-import ContactForm from "./contactForm";
+import Contact from "./contact";
 import Jumbotron from "./jumbotron";
 
 class Home extends Component {
@@ -15,7 +15,7 @@ class Home extends Component {
           strength={-1000}
         />
         <ProjectGrid />
-        <ContactForm />
+        <Contact />
       </React.Fragment>
     );
   }

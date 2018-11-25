@@ -75,7 +75,7 @@ class ContactForm extends Component {
           action="https://formspree.io/redbonobo.design@gmail.com"
           method="POST"
           onSubmit={this.handleSubmit}
-          autoComplete="off"
+          netlify
         >
           <div className="form-row">
             <div className="form-group col-md-12">
