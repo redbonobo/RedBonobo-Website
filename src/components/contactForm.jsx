@@ -3,15 +3,15 @@ import Joi from "joi-browser";
 
 class ContactForm extends Component {
   state = {
-    formData: { name: "", _replyto: "", message: "" },
-    errors: { name: "", _replyto: "", message: "" } // it should be empty but like this we start with an invalid form and text of the button is "all fields required"
+    formData: { name: "", email: "", message: "" },
+    errors: { name: "", email: "", message: "" } // it should be empty but like this we start with an invalid form and text of the button is "all fields required"
   };
 
   schema = {
     name: Joi.string()
       .required()
       .label("Name"),
-    _replyto: Joi.string()
+    email: Joi.string()
       .email()
       .required()
       .label("Email"),
@@ -59,8 +59,8 @@ class ContactForm extends Component {
 
   getButtonText = () => {
     if (Object.keys(this.state.errors).length === 0) return "SEND";
-    if ("_replyto" in this.state.errors) {
-      if (this.state.errors._replyto.includes("valid")) {
+    if ("email" in this.state.errors) {
+      if (this.state.errors.email.includes("valid")) {
         return "Invalid email";
       }
     }
@@ -75,7 +75,7 @@ class ContactForm extends Component {
           // action="https://formspree.io/redbonobo.design@gmail.com"
           method="POST"
           data-netlify="true"
-          name="contactForm"
+          name="contact"
           style={{
             width: "500px",
             margin: "auto",
@@ -83,6 +83,7 @@ class ContactForm extends Component {
             textAlign: "center"
           }}
         >
+          <input type="hidden" name="form-name" value="contact" />
           <h1 className="jumboSlogan">Get in touch.</h1>
           <div className="form-row">
             <div className="form-group col-md-12">
@@ -98,15 +99,15 @@ class ContactForm extends Component {
             </div>
             <div className="form-group col-md-12">
               <input
-                value={this.state.formData._replyto}
+                value={this.state.formData.email}
                 onChange={this.handleChange}
                 type="email"
                 className={`form-control input input-short ${
-                  this.state.errors._replyto !== "" ? "1" : "2"
+                  this.state.errors.email !== "" ? "1" : "2"
                 }`}
                 id="email"
                 placeholder="Email"
-                name="_replyto"
+                name="email"
               />
             </div>
           </div>
