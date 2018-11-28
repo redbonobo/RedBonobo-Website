@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-// import LogoDark from "../svg/Logo_dark.svg";
-import LogoWhite from "../svg/Logo_white.svg";
+// import LogoDark from "../../svg/Logo_dark.svg";
+import LogoWhite from "../../svg/Logo_white.svg";
 import { Link, NavLink } from "react-router-dom";
 
 class NavBar extends Component {
-  state = {
-    shrink: "",
-    whiteOpacity: "1",
-    darkOpactiy: "0"
-  };
+  state = {};
+
+  constructor(props) {
+    super(props);
+    this.state.shrink = "";
+    this.state.whiteOpacity = "1";
+    this.state.darkOpactiy = "0";
+  }
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.handleScroll);
@@ -19,11 +22,10 @@ class NavBar extends Component {
   };
 
   handleScroll = e => {
-    const scrollDown = document.documentElement.scrollTop > 650;
+    const scrollDown =
+      document.documentElement.scrollTop > window.innerHeight - 250;
     const shrink = scrollDown ? " shrink" : "";
-    const whiteOpacity = scrollDown ? "0" : "1";
-    const darkOpacity = scrollDown ? "1" : "0";
-    this.setState({ shrink, whiteOpacity, darkOpacity });
+    this.setState({ shrink });
   };
 
   render() {
@@ -36,21 +38,7 @@ class NavBar extends Component {
               className={`logo${this.state.shrink}`}
               to="/"
               alt="logo"
-              style={{
-                position: "absolute"
-                // opacity: `${this.state.whiteOpacity}`
-              }}
             />
-            {/* <img
-              src={LogoDark}
-              className={`logo${this.state.shrink}`}
-              to="/"
-              alt="logo"
-              style={{
-                position: "absolute",
-                opacity: `${this.state.darkOpacity}`
-              }}
-            /> */}
           </Link>
           <div className="menu">
             <NavLink
@@ -70,9 +58,9 @@ class NavBar extends Component {
             <NavLink
               className="navlink"
               activeClassName="navlink-active"
-              to="/story"
+              to="/services"
             >
-              Story
+              Services
             </NavLink>
           </div>
         </div>

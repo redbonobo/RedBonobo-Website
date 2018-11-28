@@ -72,11 +72,19 @@ class ContactForm extends Component {
     return (
       <React.Fragment>
         <form
-          action="https://formspree.io/redbonobo.design@gmail.com"
+          // action="https://formspree.io/redbonobo.design@gmail.com"
           method="POST"
-          onSubmit={this.handleSubmit}
+          // onSubmit={this.handleSubmit} not necessary because if the button is active it means you can send it
           netlify
+          name="contact"
+          style={{
+            width: "500px",
+            margin: "auto",
+            padding: "100px 0",
+            textAlign: "center"
+          }}
         >
+          <h1 className="jumboSlogan">Get in touch.</h1>
           <div className="form-row">
             <div className="form-group col-md-12">
               <input

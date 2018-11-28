@@ -1,31 +1,31 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import NavBar from "./components/navbar";
-import Home from "./components/home";
-import Contact from "./components/contact";
-import ProjectDetails from "./components/projectDetails";
-import NotFound from "./components/notFound";
-import Story from "./components/story";
-import Projects from "./components/projects";
-import Footer from "./components/footer";
+import NavBar from "./components/common/navbar";
+import HomePage from "./components/homePage";
+import ContactPage from "./components/contactPage";
+import ProjectDetailsPage from "./components/projectDetailsPage";
+import NotFoundPage from "./components/notFoundPage";
+import ServicesPage from "./components/servicesPage";
+import ProjectsPage from "./components/projectsPage";
+import Footer from "./components/common/footer";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <NavBar />
         <Switch>
-          <Route path="/contact" component={Contact} />
-          <Route path="/projects/:id" component={ProjectDetails} />} />
-          <Route path="/projects" component={Projects} />} />
-          <Route path="/story" component={Story} />} />
-          <Route path="/not-found" component={NotFound} />
-          <Route path="/" exact component={Home} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/projects/:id" component={ProjectDetailsPage} />} />
+          <Route path="/projects" component={ProjectsPage} />} />
+          <Route path="/services" component={ServicesPage} />} />
+          <Route path="/not-found" component={NotFoundPage} />
+          <Route path="/" exact component={HomePage} />
           <Redirect to="/not-found" />
         </Switch>
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

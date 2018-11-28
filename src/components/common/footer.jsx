@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Logo from "../svg/Logo_dark.svg";
+import Logo from "../../svg/Logo_dark.svg";
 
 class Footer extends Component {
   state = {};

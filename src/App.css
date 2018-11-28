@@ -86,7 +86,7 @@ body {
 
 .myHeader.shrink {
   height: 110px;
-  padding: 34px 50px;
+  padding: 36px 50px;
   background-color: #202020;
 }
 
@@ -98,12 +98,11 @@ body {
 
 .logo.shrink {
   width: 180px;
-  margin-top: 6px;
-  filter: brightness(1);
+  margin-top: 8px;
 }
 
 .logo:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
 }
 
 .navlink {
@@ -154,45 +153,29 @@ body {
 
 /*-------------- project grid ------------*/
 
-.col {
-  margin: 0;
-  padding: 0 !important;
+.galleryBackground {
+  background-position: center;
+  overflow: hidden;
+  transition: 600ms;
 }
 
-.projectItemBg {
-  background-color: black;
-  transition: 700ms;
+.galleryElement:hover .galleryBackground {
+  background-size: 110% !important;
+  filter: brightness(0.7) saturate(0);
 }
 
-.projectItemName {
-  opacity: 0;
-  display: block;
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: 400ms;
-  transition-timing-function: ease-out;
-  font-family: proximaNovaBold;
-  font-size: 32px;
+.galleryCaption {
   color: white;
+  font-family: proximaNovaBold;
+  opacity: 0;
+  letter-spacing: 5px;
+  font-size: 30px;
+  transition: 400ms;
 }
 
-.projectItem:hover .projectItemName {
+.galleryElement:hover .galleryCaption {
   opacity: 1;
-  top: 0;
-}
-
-.projectItem:hover .projectItemBg {
-  filter: saturate(0) brightness(0.7);
-}
-
-a:hover {
-  text-decoration: none !important;
-}
-
-.itemArea {
-  text-align: center;
+  letter-spacing: 0;
 }
 
 /*-------------- contact form ------------*/
@@ -249,7 +232,7 @@ a:hover {
 
 .footer {
   width: 100%;
-  margin: 0;
+  clear: both;
   display: block;
   background-color: var(--not-black);
   height: 250px;
@@ -270,11 +253,9 @@ a:hover {
   color: grey;
 }
 
-/*-------------- jumbo cover ------------*/
+/*-------------- jumbo ------------*/
 
 .jumboSlogan {
-  font-family: proximaNovaBlack;
-  font-size: 50px;
-  letter-spacing: 1px;
   color: white;
+  font-family: proximaNovaBlack;
 }
