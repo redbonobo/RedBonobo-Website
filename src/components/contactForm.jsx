@@ -74,9 +74,8 @@ class ContactForm extends Component {
         <form
           // action="https://formspree.io/redbonobo.design@gmail.com"
           method="POST"
-          // onSubmit={this.handleSubmit} not necessary because if the button is active it means you can send it
-          netlify
-          name="contact"
+          data-netlify="true"
+          name="contactForm"
           style={{
             width: "500px",
             margin: "auto",
@@ -122,14 +121,15 @@ class ContactForm extends Component {
               name="message"
             />
           </div>
-          <input
+          <button
+            type="submit"
+            disabled={this.validateForm()}
             className={`col-md-12 btn ${
               this.validateForm() ? "disabled" : "enabled"
             }`}
-            type="submit"
-            value={this.getButtonText()}
-            disabled={this.validateForm()}
-          />
+          >
+            {this.getButtonText()}
+          </button>
         </form>
       </React.Fragment>
     );
