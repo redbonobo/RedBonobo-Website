@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import NavBar from "./components/common/navbar";
-import HomePage from "./components/homePage";
+// import LandingPage from "./components/landingPage";
 import ContactPage from "./components/contactPage";
-import ProjectDetailsPage from "./components/projectDetailsPage";
+// import ProjectDetailsPage from "./components/projectDetailsPage";
 import NotFoundPage from "./components/notFoundPage";
-import ServicesPage from "./components/servicesPage";
+// import StoryPage from "./components/storyPage";
 import ProjectsPage from "./components/projectsPage";
 import Footer from "./components/common/footer";
+// import NavBarTest from "./components/common/navbar_test";
+
 import "./App.css";
 
 class App extends Component {
@@ -15,15 +17,18 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <Switch>
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/projects/:id" component={ProjectDetailsPage} />} />
-          <Route path="/projects" component={ProjectsPage} />} />
-          <Route path="/services" component={ServicesPage} />} />
-          <Route path="/not-found" component={NotFoundPage} />
-          <Route path="/" exact component={HomePage} />
-          <Redirect to="/not-found" />
-        </Switch>
+        {/* <NavBarTest /> */}
+        <div id="main">
+          <Switch>
+            <Route path="/contact" component={ContactPage} />
+            {/* <Route path="/projects/:id" component={ProjectDetailsPage} />} /> */}
+            {/* <Route path="/projects" component={ProjectsPage} />} /> */}
+            {/* <Route path="/story" component={StoryPage} />} /> */}
+            <Route path="/not-found" component={NotFoundPage} />
+            <Route path="/" exact component={ProjectsPage} />
+            <Redirect to="/not-found" />
+          </Switch>
+        </div>
         <Footer />
       </React.Fragment>
     );

@@ -30,201 +30,335 @@
   src: url("./fonts/ProximaNovaCond-Light.otf");
 }
 
-html {
-  scroll-behavior: smooth;
+@font-face {
+  font-family: futuraPTBold;
+  src: url("./fonts/FuturaPTBold.otf");
+}
+
+@font-face {
+  font-family: futuraPTBook;
+  src: url("./fonts/FuturaPTBook.otf");
+}
+
+@font-face {
+  font-family: futuraPTDemi;
+  src: url("./fonts/FuturaPTDemi.otf");
+}
+
+@font-face {
+  font-family: futuraPTHeavy;
+  src: url("./fonts/FuturaPTHeavy.otf");
 }
 
 /*-------------- VARIABLES ------------*/
 
 :root {
   --red-bonobo: #f44a52;
-  --not-black: #242424;
+  --not-black: #1b1b1b;
 }
 
-/*-------------- not found ------------*/
-
-.not-found {
-  margin: 80px auto 0 auto;
-  display: block;
-  width: 60%;
+/*-------------- container ------------*/
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: rgba(241, 241, 241, 0.377);
 }
 
-.notFound-text {
-  font-family: proximaNovaBold !important;
-  font-size: 26px !important;
-  color: grey;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin: 20px 0 120px 0;
+#root {
+  background-color: rgba(241, 241, 241, 0.377);
 }
 
-/*-------------- general body ------------*/
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: proximaNovaRegular, -apple-system, BlinkMacSystemFont,
-    "Helvetica Neue", sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.myContainer {
+  padding: 0 80px;
 }
 
 /*-------------- header ------------*/
 
-.myHeader {
-  background-color: #ffffff00;
-  height: 200px;
-  display: block;
-  position: fixed;
-  width: 100%;
-  z-index: 99;
-  transition: 0.3s;
-  clear: both;
-  padding: 80px 80px;
+.header {
+  padding: 80px 60px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.myHeader.shrink {
-  height: 110px;
-  padding: 36px 50px;
-  background-color: #202020;
+@media (max-width: 500px) {
+  .header {
+    padding: 10px;
+  }
+  .logo {
+    width: 140px !important;
+  }
+  .menu-button {
+    margin-top: 0 !important;
+    height: 60px !important;
+    width: 60px;
+  }
+  .menu-button i {
+    font-size: 20px;
+  }
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .logo {
-  width: 230px;
-  transition: 0.3s;
-  float: left;
-}
-
-.logo.shrink {
-  width: 180px;
-  margin-top: 8px;
+  padding: 10px 10px;
+  width: 140px;
+  transition: 300ms;
+  margin-top: -4px;
 }
 
 .logo:hover {
-  transform: scale(0.98);
-}
-
-.navlink {
-  font-family: proximaNovaRegular;
-  color: white;
-  float: right;
-  width: 100px;
-  height: 40px;
-  border-radius: 25px;
-  margin: 0 10px;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.082);
-  line-height: 40px;
-  text-align: center;
-  transition: 0.3s;
-  transition-timing-function: ease-in-out;
-}
-
-.navlink:hover {
-  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.11);
-  transform: translate(0, -1px);
-  background-color: white;
-  text-decoration: inherit;
-  color: inherit;
-}
-
-.navlink:active {
-  transform: scale(0.97);
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.459);
   opacity: 0.8;
 }
 
+.left-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.navlink {
+  padding: 20px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  display: block;
+  font-family: FuturaPTBook;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 300ms;
+}
+
+.navlink:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.4);
+}
+
 .navlink-active {
-  /*la classe que s'afegeix als navlinks quan estas a aquella pàgina*/
-  color: rgba(255, 255, 255, 0.603);
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.4);
 }
 
-.navlink-special {
-  margin-left: 27px;
-  background-color: var(--red-bonobo);
-  color: white;
+@media (max-width: 800px) {
+  .left-menu {
+    display: none;
+  }
+  .right-menu {
+    display: none;
+  }
 }
 
-.navlink-special:hover {
-  background-color: #f36b72;
-  text-decoration: inherit;
-  color: white;
+@media (min-width: 800px) {
+  .menu-button {
+    display: none;
+  }
 }
 
-/*-------------- project grid ------------*/
-
-.galleryBackground {
-  background-position: center;
-  overflow: hidden;
-  transition: 600ms;
+.menu-button {
+  width: 60px;
+  height: 48px;
+  float: right;
+  border: none;
+  background: none;
+  color: rgb(51, 51, 51);
+  font-size: 23px;
+  cursor: pointer;
 }
 
-.galleryElement:hover .galleryBackground {
-  background-size: 110% !important;
-  filter: brightness(0.7) saturate(0);
-}
-
-.galleryCaption {
-  color: white;
-  font-family: proximaNovaBold;
-  opacity: 0;
-  letter-spacing: 5px;
-  font-size: 30px;
+.mobile-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  visibility: hidden;
   transition: 400ms;
 }
 
-.galleryElement:hover .galleryCaption {
-  opacity: 1;
-  letter-spacing: 0;
+.mobile-menu.active {
+  visibility: visible;
+}
+
+.darkness {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 400ms;
+  margin: 0;
+}
+
+.darkness.active {
+  background-color: rgba(0, 0, 0, 0.548);
+}
+
+.sidebar {
+  height: 100vh;
+  width: 45vw;
+  position: fixed;
+  background-color: var(--red-bonobo);
+  margin: 0;
+  right: 0;
+  padding: 5vw 5vw 0 6vw;
+  box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.15);
+  transition: 400ms cubic-bezier(0.86, 0, 0.07, 1);
+  transform: translateX(90vw);
+}
+
+.sidebar.active {
+  transition: 700ms cubic-bezier(0.86, 0, 0.07, 1);
+  transform: translateX(0px);
+}
+
+.sidebar-link {
+  color: white;
+  font-family: proximaNovaBold;
+  font-size: 3.5vh;
+  display: block;
+  clear: both;
+  margin-bottom: 20px;
+  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sidebar-link:hover {
+  text-decoration: none;
+  opacity: 0.7;
+  color: white;
+  transform: translateX(1vh);
+}
+
+.sidebar-close {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 3vh;
+  margin-bottom: 4vh;
+  transition: 200ms;
+  float: right;
+  cursor: pointer;
+}
+
+.sidebar-close:hover {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+/*-------------- texts ------------*/
+
+h1 {
+  color: red;
+}
+
+h2 {
+  color: #525252 !important;
+  font-family: FuturaPTHeavy !important;
+  font-size: 35px !important;
+  letter-spacing: -0.01em !important;
+  margin-bottom: 40px !important;
+}
+
+/*-------------- gallery ------------*/
+
+.galleryBackground {
+  width: 100%;
+  height: 100%;
+  transition: 600ms;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.galleryBackground:hover {
+  filter: brightness(0.8) saturate(0);
+}
+
+.galleryElement {
+  padding: 10px !important;
+}
+
+.lightbox {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgb(228, 228, 228);
+  z-index: 6000;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lightbox-image {
+  margin: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 4px;
+}
+
+.lightbox-close {
+  cursor: pointer;
+  font-size: 20px;
+  transition: 300ms;
+  text-align: right;
+  padding: 40px 40px 0 0;
+}
+
+.lightbox-close:hover {
+  opacity: 0.8;
 }
 
 /*-------------- contact form ------------*/
 
 .input {
-  border-radius: 25px !important;
-  border: none !important;
+  border-radius: 4px !important;
+  border: 1px rgb(182, 182, 182) solid !important;
   font-family: proximaNovaRegular !important;
-  color: rgba(0, 0, 0, 0.616) !important;
-  transition: 0.3s !important;
-  padding-left: 25px !important;
+  transition: 300ms !important;
+  padding: 25px !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.input-short {
-  height: 50px !important;
-}
-
-.input-long {
-  padding-top: 20px !important;
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.342) !important;
 }
 
 .input:focus {
-  border: inset 2px var(--red-bonobo);
+  background-color: white !important;
+  box-shadow: none !important;
 }
 
-.warning {
-  border: 3px orange solid !important;
-}
-
-.btn {
-  height: 50px !important;
-  background-color: var(--red-bonobo);
-  color: white;
-  opacity: 1 !important;
+.submit-button {
+  text-transform: uppercase;
   transition: 300ms !important;
-  border-radius: 25px !important;
+  border-radius: 4px !important;
+  border: 2px grey solid;
+  background-color: rgba(255, 0, 0, 0) !important;
+  padding: 15px 30px;
+  font-family: FuturaPTDemi;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.enabled {
+  background-color: #f44a52 !important;
+  color: white;
+  border-color: #f44a52;
 }
 
 .disabled {
-  background-color: rgb(24, 24, 24) !important;
+  cursor: auto;
 }
 
 .enabled:hover {
-  transform: translateY(-2px) !important;
-  background-color: #f36b72;
+  background-color: #f36b72 !important;
 }
 
 .enabled:active {
-  transform: scale(0.94) !important;
+  transform: scale(0.98) !important;
   background-color: #f0a2a6;
 }
 
@@ -234,28 +368,52 @@ body {
   width: 100%;
   clear: both;
   display: block;
-  background-color: var(--not-black);
-  height: 250px;
-  padding-top: 100px;
+  padding: 100px 0;
   text-align: center;
 }
 
-.footer img {
-  width: 190px;
-  display: block;
-  margin: 0 auto 5px auto;
-}
-
 .footer-text {
-  color: white;
-  font-family: proximaNovaCondLight;
-  font-size: 16px;
-  color: grey;
+  color: #999;
+  transition: 300ms;
+  font-size: 10px;
+  letter-spacing: 1.9px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: FuturaPTDemi;
 }
 
-/*-------------- jumbo ------------*/
+.footer-text:hover {
+  color: rgb(122, 122, 122);
+  text-decoration: none;
+}
 
-.jumboSlogan {
-  color: white;
-  font-family: proximaNovaBlack;
+/*-------------- scrollbar ------------*/
+
+/* ::-webkit-scrollbar              
+::-webkit-scrollbar-button      
+::-webkit-scrollbar-track        
+::-webkit-scrollbar-track-piece  
+::-webkit-scrollbar-thumb        
+::-webkit-scrollbar-corner      
+::-webkit-resizer               */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--not-black);
+}
+::-webkit-scrollbar-track-piece {
+  background-color: var(--not-black);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(214, 214, 214);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(238, 238, 238);
 }

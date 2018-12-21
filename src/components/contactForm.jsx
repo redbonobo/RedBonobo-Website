@@ -71,29 +71,17 @@ class ContactForm extends Component {
     this.validateForm();
     return (
       <React.Fragment>
-        <form
-          // action="https://formspree.io/redbonobo.design@gmail.com"
-          method="POST"
-          data-netlify="true"
-          name="contact"
-          style={{
-            width: "500px",
-            margin: "auto",
-            padding: "100px 0",
-            textAlign: "center"
-          }}
-        >
+        <form method="POST" data-netlify="true" name="contact">
           <input type="hidden" name="form-name" value="contact" />
-          <h1 className="jumboSlogan">Get in touch.</h1>
           <div className="form-row">
             <div className="form-group col-md-12">
               <input
                 value={this.state.formData.name}
                 onChange={this.handleChange}
                 type="text"
-                className="form-control input input-short"
+                className="form-control input"
                 id="name"
-                placeholder="Contact name"
+                placeholder="Name *"
                 name="name"
               />
             </div>
@@ -102,11 +90,11 @@ class ContactForm extends Component {
                 value={this.state.formData.email}
                 onChange={this.handleChange}
                 type="email"
-                className={`form-control input input-short ${
+                className={`form-control input ${
                   this.state.errors.email !== "" ? "1" : "2"
                 }`}
                 id="email"
-                placeholder="Email"
+                placeholder="Email *"
                 name="email"
               />
             </div>
@@ -115,17 +103,17 @@ class ContactForm extends Component {
             <textarea
               value={this.state.formData.message}
               onChange={this.handleChange}
-              className="form-control input input-long"
+              className="form-control input"
               id="message"
               rows="6"
-              placeholder="Message"
+              placeholder="Message *"
               name="message"
             />
           </div>
           <button
             type="submit"
             disabled={this.validateForm()}
-            className={`col-md-12 btn ${
+            className={`col-sm-12 submit-button ${
               this.validateForm() ? "disabled" : "enabled"
             }`}
           >

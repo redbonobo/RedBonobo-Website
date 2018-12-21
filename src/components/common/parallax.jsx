@@ -9,7 +9,7 @@ class Parallax extends Component {
     this.state.factor = this.props.factor;
     this.state.backgroundImage = this.props.backgroundImage;
     this.state.faster = this.props.faster === true ? "-" : "";
-
+    this.state.height = this.props.height;
     this.state.scroll = 0;
   }
 
@@ -30,13 +30,13 @@ class Parallax extends Component {
 
   render() {
     return (
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: `${this.state.height}vh` }}>
         <div
           style={{
-            backgroundImage: `url(${this.state.backgroundImage})`,
             display: "block",
             width: "100%",
             height: "100%",
+            backgroundImage: `url(${this.state.backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: `0px ${this.state.faster}${this.state.scroll *
               this.state.factor -
@@ -47,7 +47,7 @@ class Parallax extends Component {
         >
           <div
             style={{
-              paddingTop: "50vh",
+              paddingTop: `${this.state.height / 2}vh`,
               opacity: `${1 - this.state.scroll * 0.002}`
             }}
             className="parallaxChildren"
@@ -60,10 +60,6 @@ class Parallax extends Component {
                 {this.props.slogan}
               </h1>
             )}
-            {/* <i
-              className="fas fa-arrow-down"
-              style={{ color: "white", fontSize: "25px" }}
-            /> */}
           </div>
         </div>
       </div>
