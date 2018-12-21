@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Logo from "../../svg/Logo.svg";
+import Logo from "../../svg/redbonobo_logo.svg";
 import { Link, NavLink } from "react-router-dom";
 
 class NavBar extends Component {
@@ -18,7 +18,7 @@ class NavBar extends Component {
   render() {
     return (
       <React.Fragment>
-        <header className="header">
+        <header className="header myContainer">
           <div className="left-menu">
             <NavLink
               exact
@@ -53,26 +53,25 @@ class NavBar extends Component {
             onClick={this.closeMenu}
           />
           <menu className={`sidebar ${this.state.sidebarActivated}`}>
+            <div className="sidebar-menu">
+              <Link
+                onClick={this.closeMenu}
+                className="sidebar-link"
+                to="/projects"
+              >
+                Projects
+              </Link>
+              <Link
+                onClick={this.closeMenu}
+                className="sidebar-link"
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </div>
             <button onClick={this.closeMenu} className="sidebar-close">
               <i className="fas fa-times" />
             </button>
-            <Link onClick={this.closeMenu} className="sidebar-link" to="/storu">
-              Story
-            </Link>
-            <Link
-              onClick={this.closeMenu}
-              className="sidebar-link"
-              to="/projects"
-            >
-              Projects
-            </Link>
-            <Link
-              onClick={this.closeMenu}
-              className="sidebar-link"
-              to="/contact"
-            >
-              Contact
-            </Link>
           </menu>
         </div>
       </React.Fragment>

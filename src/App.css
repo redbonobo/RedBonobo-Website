@@ -1,33 +1,13 @@
 /*-------------- GLOBAL ------------*/
 
 @font-face {
-  font-family: proximaNovaBlack;
-  src: url("./fonts/ProximaNova-Black.otf");
-}
-
-@font-face {
-  font-family: proximaNovaLight;
-  src: url("./fonts/ProximaNova-Light.otf");
-}
-
-@font-face {
   font-family: proximaNovaRegular;
   src: url("./fonts/ProximaNova-Regular.otf");
 }
 
 @font-face {
-  font-family: proximaNovaBold;
-  src: url("./fonts/ProximaNova-Bold.otf");
-}
-
-@font-face {
-  font-family: proximaNovaSemibold;
-  src: url("./fonts/ProximaNova-Semibold.otf");
-}
-
-@font-face {
-  font-family: proximaNovaCondLight;
-  src: url("./fonts/ProximaNovaCond-Light.otf");
+  font-family: proximaNovaBlack;
+  src: url("./fonts/ProximaNova-Black.otf");
 }
 
 @font-face {
@@ -68,7 +48,10 @@ html {
 }
 
 .myContainer {
-  padding: 0 80px;
+  padding-left: 80px;
+  padding-right: 80px;
+  max-width: 1920px;
+  margin: auto;
 }
 
 /*-------------- header ------------*/
@@ -94,6 +77,10 @@ html {
   .menu-button i {
     font-size: 20px;
   }
+  .myContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .center-content {
@@ -106,7 +93,7 @@ html {
   padding: 10px 10px;
   width: 140px;
   transition: 300ms;
-  margin-top: -4px;
+  margin-top: -2px;
 }
 
 .logo:hover {
@@ -172,9 +159,10 @@ html {
 
 .mobile-menu {
   position: fixed;
+  top: 0;
   width: 100%;
   height: 100%;
-  z-index: 5000;
+  z-index: 10000;
   visibility: hidden;
   transition: 400ms;
 }
@@ -185,8 +173,10 @@ html {
 
 .darkness {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0);
   transition: 400ms;
   margin: 0;
@@ -198,12 +188,16 @@ html {
 
 .sidebar {
   height: 100vh;
-  width: 45vw;
+  max-width: 600px;
   position: fixed;
-  background-color: var(--red-bonobo);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #f7f7f7;
   margin: 0;
   right: 0;
-  padding: 5vw 5vw 0 6vw;
+  padding: 50px;
   box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.15);
   transition: 400ms cubic-bezier(0.86, 0, 0.07, 1);
   transform: translateX(90vw);
@@ -214,37 +208,39 @@ html {
   transform: translateX(0px);
 }
 
+.sidebar-menu {
+  padding-right: 100px;
+}
+
 .sidebar-link {
-  color: white;
-  font-family: proximaNovaBold;
-  font-size: 3.5vh;
-  display: block;
+  color: rgb(78, 78, 78);
+  font-family: futuraPTBold;
+  font-size: 20px;
+  padding: 15px 0;
+  transition: 200ms;
   clear: both;
-  margin-bottom: 20px;
-  transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: block;
 }
 
 .sidebar-link:hover {
   text-decoration: none;
-  opacity: 0.7;
-  color: white;
-  transform: translateX(1vh);
+  opacity: 0.5;
+  color: inherit;
 }
 
 .sidebar-close {
-  color: white;
+  background-color: #f44a52;
   background: none;
   border: none;
-  font-size: 3vh;
-  margin-bottom: 4vh;
+  padding: 10px;
+  font-size: 20px;
   transition: 200ms;
-  float: right;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .sidebar-close:hover {
-  transform: scale(0.95);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 /*-------------- texts ------------*/
@@ -253,30 +249,63 @@ h1 {
   color: red;
 }
 
+#designed-by {
+  margin: 0 !important;
+  font-size: 12px;
+}
+
 h2 {
   color: #525252 !important;
   font-family: FuturaPTHeavy !important;
   font-size: 35px !important;
-  letter-spacing: -0.01em !important;
+  letter-spacing: -0.35px !important;
+  margin: 25px 0 !important;
+}
+
+p {
+  font-family: proximaNovaRegular;
+  font-size: 16px;
+  line-height: 29px;
+  letter-spacing: 0.16px;
+  color: rgba(112, 112, 112, 0.5);
   margin-bottom: 40px !important;
 }
 
 /*-------------- gallery ------------*/
 
-.galleryBackground {
-  width: 100%;
-  height: 100%;
-  transition: 600ms;
-  cursor: pointer;
-  border-radius: 4px;
+.gallery-container {
+  column-count: 2;
+  column-gap: 20px;
 }
 
-.galleryBackground:hover {
+@media (max-width: 1000px) {
+  .gallery-container {
+    column-count: 1;
+  }
+}
+
+.galleryImage {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 400ms;
+}
+
+.galleryImage:hover {
   filter: brightness(0.8) saturate(0);
 }
 
-.galleryElement {
-  padding: 10px !important;
+.invisible {
+  opacity: 0;
+  transform: scale(0.99);
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .lightbox {
@@ -284,12 +313,20 @@ h2 {
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgb(228, 228, 228);
   z-index: 6000;
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+.lightbox-window {
+  display: block;
+  position: absolute;
 }
 
 .lightbox-image {
@@ -299,12 +336,43 @@ h2 {
   border-radius: 4px;
 }
 
+.lightbox-info {
+  color: white;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  top: 0;
+  width: 100%;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  );
+  border-radius: 4px;
+}
+
+h3 {
+  font-family: FuturaPTHeavy !important;
+  font-size: 30px !important;
+  letter-spacing: -0.35px !important;
+}
+
+h4 {
+  font-family: FuturaPTBook !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+}
+
 .lightbox-close {
+  margin: 0;
+  line-height: 1em;
   cursor: pointer;
   font-size: 20px;
   transition: 300ms;
-  text-align: right;
-  padding: 40px 40px 0 0;
+  padding: 20px;
+  color: white;
 }
 
 .lightbox-close:hover {
@@ -333,6 +401,7 @@ h2 {
 
 .submit-button {
   text-transform: uppercase;
+  font-size: 15px;
   transition: 300ms !important;
   border-radius: 4px !important;
   border: 2px grey solid;
@@ -365,16 +434,17 @@ h2 {
 /*-------------- footer ------------*/
 
 .footer {
-  width: 100%;
   clear: both;
-  display: block;
-  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 0;
   text-align: center;
 }
 
 .footer-text {
   color: #999;
   transition: 300ms;
+  padding: 20px;
   font-size: 10px;
   letter-spacing: 1.9px;
   cursor: pointer;
@@ -385,6 +455,14 @@ h2 {
 .footer-text:hover {
   color: rgb(122, 122, 122);
   text-decoration: none;
+}
+
+/*-------------- 404 ------------*/
+
+.not-found-text {
+  font-family: proximaNovaBlack;
+  color: rgba(0, 0, 0, 0.473);
+  text-align: center;
 }
 
 /*-------------- scrollbar ------------*/
