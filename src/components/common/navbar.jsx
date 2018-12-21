@@ -54,11 +54,7 @@ class NavBar extends Component {
           />
           <menu className={`sidebar ${this.state.sidebarActivated}`}>
             <div className="sidebar-menu">
-              <Link
-                onClick={this.closeMenu}
-                className="sidebar-link"
-                to="/projects"
-              >
+              <Link onClick={this.closeMenu} className="sidebar-link" to="/">
                 Projects
               </Link>
               <Link
