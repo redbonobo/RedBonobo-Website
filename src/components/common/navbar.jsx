@@ -18,57 +18,71 @@ class NavBar extends Component {
   render() {
     return (
       <React.Fragment>
-        <header className="header myContainer">
-          <div className="left-menu">
-            <NavLink
-              exact
-              className="navlink"
-              activeClassName="navlink-active"
-              to="/"
-            >
-              Projects
-            </NavLink>
-          </div>
-          <div className="center-content">
-            <Link to="/">
-              <img src={Logo} className="logo" to="/" alt="logo" />
-            </Link>
-          </div>
-          <div className="right-menu">
-            <NavLink
-              className="navlink"
-              activeClassName="navlink-active"
-              to="/contact"
-            >
-              Contact
-            </NavLink>
-          </div>
-          <button onClick={this.openMenu} className="menu-button">
-            <i className="fas fa-bars" />
-          </button>
-        </header>
-        <div className={`mobile-menu ${this.state.sidebarActivated}`}>
-          <div
-            className={`darkness ${this.state.sidebarActivated}`}
-            onClick={this.closeMenu}
-          />
-          <menu className={`sidebar ${this.state.sidebarActivated}`}>
-            <div className="sidebar-menu">
-              <Link onClick={this.closeMenu} className="sidebar-link" to="/">
+        <div className="myContainer">
+          <header className="header">
+            <div className="left-menu">
+              <NavLink
+                exact
+                className="navlink"
+                activeClassName="navlink-active"
+                to="/projects"
+              >
                 Projects
+              </NavLink>
+            </div>
+            <div className="center-content">
+              <Link to="/">
+                <img src={Logo} className="logo" to="/" alt="logo" />
               </Link>
-              <Link
-                onClick={this.closeMenu}
-                className="sidebar-link"
+            </div>
+            <div className="right-menu">
+              <NavLink
+                className="navlink"
+                activeClassName="navlink-active"
                 to="/contact"
               >
                 Contact
-              </Link>
+              </NavLink>
             </div>
-            <button onClick={this.closeMenu} className="sidebar-close">
-              <i className="fas fa-times" />
+            <button onClick={this.openMenu} className="menu-button">
+              <i className="fas fa-bars" />
             </button>
-          </menu>
+          </header>
+          <div className={`mobile-menu ${this.state.sidebarActivated}`}>
+            <div
+              className={`darkness ${this.state.sidebarActivated}`}
+              onClick={this.closeMenu}
+            />
+            <menu className={`sidebar ${this.state.sidebarActivated}`}>
+              <div className="sidebar-menu">
+                <Link
+                  onClick={this.closeMenu}
+                  exact
+                  className="sidebar-link"
+                  to="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  onClick={this.closeMenu}
+                  className="sidebar-link"
+                  to="/projects"
+                >
+                  Projects
+                </Link>
+                <Link
+                  onClick={this.closeMenu}
+                  className="sidebar-link"
+                  to="/contact"
+                >
+                  Contact
+                </Link>
+              </div>
+              <button onClick={this.closeMenu} className="sidebar-close">
+                <i className="fas fa-times" />
+              </button>
+            </menu>
+          </div>
         </div>
       </React.Fragment>
     );

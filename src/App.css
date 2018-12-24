@@ -16,6 +16,11 @@
 }
 
 @font-face {
+  font-family: futuraPTMedium;
+  src: url("./fonts/FuturaPTMedium.otf");
+}
+
+@font-face {
   font-family: futuraPTBook;
   src: url("./fonts/FuturaPTBook.otf");
 }
@@ -48,8 +53,7 @@ html {
 }
 
 .myContainer {
-  padding-left: 80px;
-  padding-right: 80px;
+  padding: 0 80px;
   max-width: 1920px;
   margin: auto;
 }
@@ -57,30 +61,9 @@ html {
 /*-------------- header ------------*/
 
 .header {
-  padding: 80px 60px;
+  padding: 80px 0;
   display: flex;
   justify-content: space-between;
-}
-
-@media (max-width: 500px) {
-  .header {
-    padding: 10px;
-  }
-  .logo {
-    width: 140px !important;
-  }
-  .menu-button {
-    margin-top: 0 !important;
-    height: 60px !important;
-    width: 60px;
-  }
-  .menu-button i {
-    font-size: 20px;
-  }
-  .myContainer {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
 
 .center-content {
@@ -129,21 +112,6 @@ html {
 .navlink-active {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.4);
-}
-
-@media (max-width: 800px) {
-  .left-menu {
-    display: none;
-  }
-  .right-menu {
-    display: none;
-  }
-}
-
-@media (min-width: 800px) {
-  .menu-button {
-    display: none;
-  }
 }
 
 .menu-button {
@@ -245,21 +213,49 @@ html {
 
 /*-------------- texts ------------*/
 
-h1 {
-  color: red;
-}
-
-#designed-by {
-  margin: 0 !important;
-  font-size: 12px;
-}
-
-h2 {
+.h1 {
   color: #525252 !important;
+  font-family: FuturaPTBold !important;
+  font-size: 8vw !important;
+  letter-spacing: -0.4vw !important;
+  line-height: 0.8em !important;
+}
+
+.h2 {
+  color: #535353 !important;
   font-family: FuturaPTHeavy !important;
   font-size: 35px !important;
+  line-height: 42px !important;
   letter-spacing: -0.35px !important;
-  margin: 25px 0 !important;
+  margin-bottom: 50px !important;
+}
+
+.h3 {
+  color: rgba(112, 112, 112, 0.5) !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase;
+  font-size: 13px !important;
+  letter-spacing: 2.3px !important;
+  line-height: 26px !important;
+  font-family: FuturaPTBold !important;
+  letter-spacing: 3px !important;
+}
+
+.h4 {
+  color: rgba(112, 112, 112, 0.5) !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase;
+  font-size: 9px !important;
+  letter-spacing: 2.3px !important;
+  line-height: 26px !important;
+  font-family: FuturaPTBold !important;
+  letter-spacing: 3px !important;
+}
+
+.overlay {
+  color: white !important;
+  border-color: white !important;
+  margin: 0 !important;
 }
 
 p {
@@ -271,17 +267,47 @@ p {
   margin-bottom: 40px !important;
 }
 
+.centered {
+  text-align: center !important;
+}
+
+#designed-by {
+  margin: 0 !important;
+  font-size: 12px;
+}
+.strip {
+  padding: 80px;
+}
+
+.button {
+  padding: 25px 46px;
+  display: inline-block;
+  border: 2px grey solid;
+  border-radius: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: FuturaPTDemi;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 300ms !important;
+  margin: 15px !important;
+}
+
+.button:hover {
+  background-color: #525252;
+  text-decoration: none;
+}
+
+.button.overlay:hover {
+  background-color: white !important;
+  color: rgb(63, 63, 63) !important;
+}
+
 /*-------------- gallery ------------*/
 
 .gallery-container {
   column-count: 2;
   column-gap: 20px;
-}
-
-@media (max-width: 1000px) {
-  .gallery-container {
-    column-count: 1;
-  }
 }
 
 .galleryImage {
@@ -350,19 +376,6 @@ p {
     rgba(0, 0, 0, 0)
   );
   border-radius: 4px;
-}
-
-h3 {
-  font-family: FuturaPTHeavy !important;
-  font-size: 30px !important;
-  letter-spacing: -0.35px !important;
-}
-
-h4 {
-  font-family: FuturaPTBook !important;
-  font-size: 10px !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
 }
 
 .lightbox-close {
@@ -476,22 +489,77 @@ h4 {
 ::-webkit-resizer               */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
   height: 0px;
 }
 ::-webkit-scrollbar-button {
   display: none;
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--not-black);
+  background-color: white;
 }
 ::-webkit-scrollbar-track-piece {
-  background-color: var(--not-black);
+  background-color: white;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(214, 214, 214);
+  background-color: rgb(50, 50, 50);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(238, 238, 238);
+@media (max-width: 800px) {
+  .left-menu {
+    display: none;
+  }
+  .right-menu {
+    display: none;
+  }
+  .gallery-container {
+    column-count: 1;
+  }
+  .myContainer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .header {
+    padding: 50px 0;
+  }
+  .lightbox-image {
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 800px) {
+  .menu-button {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    padding: 10px;
+  }
+  .logo {
+    width: 140px !important;
+  }
+  .menu-button {
+    margin-top: 0 !important;
+    height: 60px !important;
+    width: 60px;
+  }
+  .menu-button i {
+    font-size: 20px;
+  }
+  .myContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .lightbox-info {
+    padding: 10px;
+    transform: translateY(-100%);
+  }
+  .lightbox {
+    background-color: rgba(0, 0, 0, 1);
+  }
+  .strip {
+    padding: 80px 30px;
+  }
 }

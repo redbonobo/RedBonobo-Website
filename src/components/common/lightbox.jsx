@@ -27,8 +27,8 @@ class Lightbox extends Component {
           />
           <div className="lightbox-info">
             <div className="lightbox-text">
-              <h3>{this.props.element.name}</h3>
-              <h4>{this.props.element.type}</h4>
+              <h3 className="h3 overlay">{this.props.element.name}</h3>
+              <p className="p overlay">{this.props.element.type}</p>
             </div>
             <i
               className="fas fa-times lightbox-close"

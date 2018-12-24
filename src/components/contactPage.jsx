@@ -11,7 +11,7 @@ class ContactPage extends Component {
     return (
       <div className="contact-container myContainer">
         <div className="row">
-          <div className="col-lg-7" style={{ paddingRight: "20px" }}>
+          <div className="col-md-6" style={{ paddingRight: "20px" }}>
             <div
               style={{
                 backgroundImage: `url(${require("../img/profile-picture.jpg")})`,
@@ -23,9 +23,11 @@ class ContactPage extends Component {
               }}
             />
           </div>
-          <div className="col-lg-5">
-            <h2 style={{ paddingTop: "10px" }}>Marcel</h2>
-            <p>
+          <div className="col-md-6">
+            <h2 className="h2" style={{ paddingTop: "10px" }}>
+              Marcel
+            </h2>
+            <p className="p">
               Thorough Designer + Creative Engineer. Expert in turning problems
               into design challanges through innovation. Passionate about all
               design and research phases of a project. Multi-disciplinary
